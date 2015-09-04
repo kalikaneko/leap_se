@@ -195,6 +195,15 @@ h3. Token Authentication
 
 Tokens returned by the authentication request are used to authenticate further requests to the API and stored as a Hash in the couch database. Soledad directly queries the couch database to ensure the authentication of a user. It compares a hash of the token to the one stored in the database. Hashing prevents timing attacks.
 
+The clients should add the following header to their requests when communicating with the API:
+
+<pre>
+Authentication: 'Token token="<token>"'
+</pre>
+
+Where @<token>@ is the value of the receved token during the final authentication step.
+
+
 h3. Logout
 
 Destroy the current session and invalidate the token. Requires authentication.
